@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #222;
+        }
+
+        /* Navigation bar */
+        nav {
+            background-color: #101b35;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav h2 {
+            color: #ffffff;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: #64d8cb;
+        }
+
+        /* Heading */
+        header {
+            text-align: center;
+            padding: 45px 15px 25px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            color: #666;
+        }
+
+        /* Category buttons */
+        .categories {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .categories button {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 10px 18px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .categories button:hover {
+            background-color: #101b35;
+            color: white;
+        }
+
+        /* Image gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 25px 8% 50px;
+        }
+
+        .gallery-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .caption {
+            padding: 15px;
+        }
+
+        .caption h3 {
+            margin-bottom: 6px;
+        }
+
+        .caption p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #101b35;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 0 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>ImageGallery</h2>
+        <div>
+            <a href="#home">Home</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header id="home">
+        <h1>Beautiful Moments, Captured</h1>
+        <p>Explore beautiful photographs from around the world.</p>
+    </header>
+
+    <div class="categories">
+        <button onclick="filterImages('all')">All</button>
+        <button onclick="filterImages('nature')">Nature</button>
+        <button onclick="filterImages('cities')">Cities</button>
+        <button onclick="filterImages('people')">People</button>
+        <button onclick="filterImages('animals')">Animals</button>
+        <button onclick="filterImages('architecture')">Architecture</button>
+    </div>
+
+    <section class="gallery" id="gallery">
+
+        <div class="gallery-item" data-category="nature">
+            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600" alt="Mountain lake">
+            <div class="caption">
+                <h3>Mountain Lake</h3>
+                <p>Nature Collection</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="cities">
+            <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600" alt="City skyline">
+            <div class="caption">
+                <h3>City Lights</h3>
+                <p>City Collection</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="animals">
+            <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=600" alt="Dog">
+            <div class="caption">
+                <h3>Lovely Dog</h3>
+                <p>Animals Collection</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="nature">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600" alt="Green landscape">
+            <div class="caption">
+                <h3>Green Valley</h3>
+                <p>Nature Collection</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="architecture">
+            <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=600" alt="Modern architecture">
+            <div class="caption">
+                <h3>Modern Building</h3>
+                <p>Architecture Collection</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="people">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600" alt="Portrait">
+            <div class="caption">
+                <h3>Portrait</h3>
+                <p>People Collection</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="nature">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600" alt="Forest">
+            <div class="caption">
+                <h3>Deep Forest</h3>
+                <p>Nature Collection</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="cities">
+            <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=600" alt="City at night">
+            <div class="caption">
+                <h3>Night City</h3>
+                <p>City Collection</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="animals">
+            <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=600" alt="Cat">
+            <div class="caption">
+                <h3>Curious Cat</h3>
+                <p>Animals Collection</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="architecture">
+            <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=600" alt="Building design">
+            <div class="caption">
+                <h3>City Architecture</h3>
+                <p>Architecture Collection</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="people">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600" alt="Person portrait">
+            <div class="caption">
+                <h3>Natural Portrait</h3>
+                <p>People Collection</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="nature">
+            <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=600" alt="Wildlife in nature">
+            <div class="caption">
+                <h3>Wild Nature</h3>
+                <p>Nature Collection</p>
+            </div>
+        </div>
+
+    </section>
+
+    <footer id="about">
+        <p id="contact">&copy; 2026 ImageGallery. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function filterImages(category) {
+            const items = document.querySelectorAll(".gallery-item");
+
+            items.forEach(function(item) {
+                if (category === "all" ||
+                    item.dataset.category === category) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
